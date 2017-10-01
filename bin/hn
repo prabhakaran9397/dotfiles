@@ -1,0 +1,22 @@
+#!/usr/bin/python
+
+# news.ycombinator.com - Top 30
+
+from bs4 import BeautifulSoup
+import os
+import sys
+
+def getFeed(url):
+	os.system('curl -s -o .page.html "'+ url +'"')
+	page 	= open('./.page.html')
+	soup	= BeautifulSoup(page, 'html.parser')
+	items 	= soup.find_all('item')
+	i = 1
+	for item in items:
+		title	= "{}".format(item.title.string.encode("ascii", "ignore"))
+		print('[' + str(i) + '] ' + title)
+		i += 1
+	os.system('rm .page.html')
+
+if __name__ == '__main__':
+    getFeed("https://news.ycombinator.com/rss")

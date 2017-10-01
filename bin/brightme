@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Control Brightness From Commandline
+
+BRIGHTNESS_PATH='/sys/class/backlight/acpi_video0/'
+#BRIGHTNESS_PATH='/sys/class/backlight/intel_backlight/'
+
+BRIGHTNESS="$BRIGHTNESS_PATH/brightness"
+MAXBRIGHTNESS=$(cat $BRIGHTNESS_PATH/max_brightness)
+MINBRIGHTNESS=1
+NUMBER=$1
+#Check if integer
+Int='^[0-9]+$'
+if [[ $NUMBER =~ $Int ]]; then
+	if (( "$NUMBER" >= "$MAXBRIGHTNESS" )); then
+		NUMBER=$MAXBRIGHTNESS
+	elif (( "$NUMBER" < "$MINBRIGHTNESS" )); then
+        	NUMBER=$MINBRIGHTNESS
+	fi
+	if [[ "$USER" = "root" ]]; then
+		echo $NUMBER > $BRIGHTNESS
+	else
+		echo "Run as root, use sudo"
+	fi
+fi
+echo "Now the brightness is $(cat $BRIGHTNESS)"

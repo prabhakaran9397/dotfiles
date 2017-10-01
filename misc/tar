@@ -1,0 +1,11 @@
+# To compress 
+tar -cvf file.tar dir
+tar -zcvf file.tar.gz dir
+tar -jcvf file.tar.bz2 dir
+tar -Jcvf file.tar.xz dir
+
+# To decompress 
+tar -xvf file.tar
+tar -zxvf file.tar.gz
+tar -jxvf file.tar.bz2
+tar -Jxvf file.tar.xz

@@ -1,0 +1,163 @@
+# # ~/.config/lxpanel/Lubuntu/panels/panel
+
+Global {
+    edge=bottom
+    allign=left
+    margin=0
+    widthtype=percent
+    width=100
+    height=26
+    transparent=0
+    tintcolor=#000000
+    alpha=0
+    autohide=0
+    heightwhenhidden=2
+    setdocktype=1
+    setpartialstrut=1
+    usefontcolor=0
+    fontsize=10
+    fontcolor=#000000
+    usefontsize=0
+    background=0
+    backgroundfile=/usr/share/lxpanel/images/lubuntu-background.png
+    iconsize=26
+    loglevel=2
+}
+
+Plugin {
+    type = menu
+    Config {
+        image=/home/prabhakaran9397/Pictures/flash.png
+        system {
+        }
+        separator {
+        }
+        item {
+            command=run
+        }
+        separator {
+        }
+        item {
+            image=gnome-logout
+            command=logout
+        }
+    }
+}
+
+Plugin {
+    type = space
+    Config {
+        Size=5
+    }
+}
+
+Plugin {
+    type = launchbar
+    Config {
+        Button {
+            id=/usr/share/applications/baobab.desktop
+        }
+        Button {
+            id=/usr/share/applications/gnome-disks.desktop
+        }
+        Button {
+            id=/usr/share/applications/lxrandr.desktop
+        }
+        Button {
+            id=/usr/share/applications/conky-manager.desktop
+        }
+        Button {
+            id=/usr/share/applications/unity-control-center.desktop
+        }
+        Button {
+            id=/usr/share/applications/google-chrome.desktop
+        }
+    }
+}
+
+Plugin {
+    type = space
+    Config {
+        Size=5
+    }
+}
+
+Plugin {
+    type = taskbar
+    expand=1
+    Config {
+        tooltips=1
+        IconsOnly=1
+        ShowAllDesks=0
+        UseMouseWheel=0
+        UseUrgencyHint=1
+        FlatButton=0
+        MaxTaskWidth=200
+        spacing=0
+        GroupedTasks=0
+    }
+}
+
+Plugin {
+    type = space
+    expand=1
+    Config {
+        Size=2
+    }
+}
+
+Plugin {
+    type = thermal
+    Config {
+        NormalColor=#00ff00
+        Warning1Color=#fff000
+        Warning2Color=#ff0000
+        CustomLevels=1
+        Warning1Temp=-10
+        Warning2Temp=-5
+        AutomaticSensor=1
+    }
+}
+
+Plugin {
+    type = tray
+}
+
+Plugin {
+    type = space
+    Config {
+        Size=5
+    }
+}
+
+Plugin {
+    type = batt
+    Config {
+        HideIfNoBattery=0
+        AlarmCommand=xmessage Battery low
+        AlarmTime=5
+        BackgroundColor=black
+        BorderWidth=1
+        ChargingColor1=#28f200
+        ChargingColor2=#22cc00
+        DischargingColor1=#ffee00
+        DischargingColor2=#d9ca00
+        Size=8
+    }
+}
+
+Plugin {
+    type = volumealsa
+}
+
+Plugin {
+    type = dclock
+    Config {
+        ClockFmt=[%I:%M%p][%d/%m/%y][%a]
+        TooltipFmt=%A %x
+        BoldFont=0
+        IconOnly=0
+        CenterText=0
+    }
+}
+

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+sudo mount /dev/sda6 /media/prabhakaran9397
+sudo /bin/bash /usr/local/bin/brightme 10
+
+hf='/home/prabhakaran9397/.bash_history'
+if [ -z "$(cat $hf | grep -E "====================$(date '+%d-%m-%Y')====================")" ]; then
+		echo "====================$(date '+%d-%m-%Y')====================" >> $hf
+fi
+
+exit 0

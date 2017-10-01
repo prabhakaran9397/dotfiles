@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Notify-send Cron
+
+eval "export $(egrep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep -u $LOGNAME lxsession)/environ)"
+
+title='Title'
+content='Content'
+
+if [ $1 ]; then title=$1; fi
+if [ $2 ]; then content=$2; fi
+
+/usr/bin/notify-send "$title" "$content" 

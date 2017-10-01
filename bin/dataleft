@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# AirTel Dataleft 
+
+HOME=/home/prabhakaran9397
+EID=Arul
+exp=600 #seconds
+result="Happy Day"
+
+if iwconfig wlan0 | grep -oF $EID > /dev/null; then
+    if [ -f $HOME/.dataleft ]; then
+        content=($(<$HOME/.dataleft))
+        (($(date +%s) - ${content[0]} > $exp)) && rm $HOME/.dataleft
+    fi
+    if ! [ -f $HOME/.dataleft ]; then
+        if curl --connect-timeout 2 -s http://122.160.230.125:8080/planupdate/ > /tmp/dataleft; then
+            val=`cat /tmp/dataleft | grep "You are left with" | grep -oP ">.+?<" | tail -1 | sed 's/[<>]//g'`
+            dat=`cat /tmp/dataleft | grep "day(s)" | grep -oP ">.+?<" | tail -1 | sed 's/[<>]//g'`
+            echo "$(date +%s) $val : $dat" > $HOME/.dataleft
+        fi
+    fi
+    if [ -f $HOME/.dataleft ]; then
+        content=($(<$HOME/.dataleft))
+        result="${content[@]:1}"
+    fi
+fi
+
+echo $result

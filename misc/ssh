@@ -1,0 +1,8 @@
+ssh-keygen
+
+ssh-add ~/.ssh/id_rsa
+
+ssh-copy-id demo@SERVER_IP_ADDRESS
+or
+cat ~/.ssh/id_rsa.pub <COPY TO SERVER> ~/.ssh/authorized_keys
+

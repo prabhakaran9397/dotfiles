@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Crazy Joker
+
+[ $1 ] && { [ $1 -gt 45 ] && L=45 || L=$1; }
+[ $2 ] && S=$2 || S=0
+[ $3 ] && [ -f $3 ] && f=$3 || f=~/Music/Joker.mp3
+
+for i in `seq 1 $L`; {
+	cvlc --play-and-exit --no-loop --no-repeat $f > /dev/null 2>&1 &
+	sleep $S
+}

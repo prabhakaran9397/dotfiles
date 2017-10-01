@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# When I mess with the display server
+
+sudo apt-get purge "fglrx*"
+sudo rm /etc/X11/xorg.conf
+sudo apt-get install --reinstall xserver-xorg-core libgl1-mesa-glx:amd64 libgl1-mesa-dri:amd64
+sudo dpkg-reconfigure xserver-xorg
+sudo reboot
