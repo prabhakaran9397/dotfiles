@@ -29,14 +29,17 @@ shopt -s checkwinsize
 # shell prompt
 PROMPT_COMMAND=my_prompt
 my_prompt() {
+    local stat=$?
     local red='\[\033[01;31m\]'
     local blu='\[\033[01;34m\]'
+    local gre='\[\033[01;32m\]'
     local end='\[\033[00m\]'
+    local tty='[$(tty|cut -d/ -f4)]'
+    [ $stat = 0 ] && color=$blu || color=$red
+    local dir=$color'[\w]'$end
+    local git=$gre$(__git_ps1 '(%s)')$end
     local sym='\$'
-    local tty=$(tty|cut -d/ -f4)
-    [ $? = 0 ] && color=$blu || color=$red
-    local git_branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/[\1]/')
-    PS1="[$tty][$color\w$end]$git_branch$sym "
+    PS1="${tty}${dir}${git}${sym} "
 }
 
 # aliases
