@@ -1,4 +1,5 @@
-# # ~/.config/lxpanel/Lubuntu/panels/panel
+# lxpanel <profile> config file. Manually editing is not recommended.
+# Use preference dialog in lxpanel to adjust config when you can.
 
 Global {
     edge=bottom
@@ -6,7 +7,7 @@ Global {
     margin=0
     widthtype=percent
     width=100
-    height=26
+    height=21
     transparent=0
     tintcolor=#000000
     alpha=0
@@ -20,7 +21,7 @@ Global {
     usefontsize=0
     background=0
     backgroundfile=/usr/share/lxpanel/images/lubuntu-background.png
-    iconsize=26
+    iconsize=22
     loglevel=2
 }
 
@@ -62,9 +63,6 @@ Plugin {
         }
         Button {
             id=/usr/share/applications/lxrandr.desktop
-        }
-        Button {
-            id=/usr/share/applications/conky-manager.desktop
         }
         Button {
             id=/usr/share/applications/unity-control-center.desktop
@@ -120,10 +118,6 @@ Plugin {
 }
 
 Plugin {
-    type = tray
-}
-
-Plugin {
     type = space
     Config {
         Size=5
@@ -143,6 +137,24 @@ Plugin {
         DischargingColor1=#ffee00
         DischargingColor2=#d9ca00
         Size=8
+    }
+}
+
+Plugin {
+    type = space
+    Config {
+        Size=4
+    }
+}
+
+Plugin {
+    type = tray
+}
+
+Plugin {
+    type = space
+    Config {
+        Size=5
     }
 }
 

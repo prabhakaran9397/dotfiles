@@ -31,11 +31,11 @@ PROMPT_COMMAND=my_prompt
 my_prompt() {
     local stat=$?
     local red='\[\033[01;31m\]'
-    local blu='\[\033[01;34m\]'
+    local cya='\[\033[01;36m\]'
     local gre='\[\033[01;32m\]'
     local end='\[\033[00m\]'
     local tty='[$(tty|cut -d/ -f4)]'
-    [ $stat = 0 ] && color=$blu || color=$red
+    [ $stat = 0 ] && color=$cya || color=$red
     local dir=$color'[\w]'$end
     local git=$gre$(__git_ps1 '(%s)')$end
     local sym='\$'
