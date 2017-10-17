@@ -34,16 +34,21 @@ my_prompt() {
     local cya='\[\033[01;36m\]'
     local gre='\[\033[01;32m\]'
     local end='\[\033[00m\]'
-    local tty='[$(tty|cut -d/ -f4)]'
+    local tty="[$(tty|cut -d/ -f4)]"
+    local pw=$(echo -n [$PWD])
     [ $stat = 0 ] && color=$cya || color=$red
     local dir=$color'[\w]'$end
     local git=$gre$(__git_ps1 '(%s)')$end
     local sym='\$'
-    PS1="${tty}${dir}${git}${sym} "
+    PS1="${dir}${git}${sym} "
+    echo -en "\033]0;${tty}${pw}\a"
 }
 
 # aliases
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
+
+# exports
+[ -f ~/.bash_exports ] && . ~/.bash_exports
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

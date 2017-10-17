@@ -65,6 +65,9 @@ Plugin {
             id=/usr/share/applications/lxrandr.desktop
         }
         Button {
+            id=/usr/share/applications/conky-manager.desktop
+        }
+        Button {
             id=/usr/share/applications/unity-control-center.desktop
         }
         Button {

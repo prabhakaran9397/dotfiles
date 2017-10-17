@@ -9,3 +9,11 @@ sudo /bin/bash /usr/local/bin/brightme 120
 hf='/home/prabhakaran9397/.bash_history'
 [ -z "$(cat $hf | grep -E "====================$(date '+%d-%m-%Y')====================")" ] && echo "====================$(date '+%d-%m-%Y')====================" >> $hf
 
+unwanteds=('System Volume Information' '$RECYCLE.BIN')
+base=/media
+
+for path in $(ls $base); {
+    for unwanted in "${unwanteds[@]}"; {
+        rm -rf "$base/$path/$unwanted"
+    }
+}
