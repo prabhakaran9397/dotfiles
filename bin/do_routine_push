@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ -z $2 ] || [ -z $3 ] || [ -z $4 ]; then
+    exit 1;
+fi
+
 if [ $1 ] && [ -d $1 ]; then
 	cd $1
 	if [ -d .git ]; then
@@ -7,6 +11,6 @@ if [ $1 ] && [ -d $1 ]; then
 		    git add -A
 		    git commit -m "routine commit $(date '+%d-%b-%Y-%I:%M%p')"
         fi
-		git push origin master
+        echo "git push https://$2:$3@$(git remote -v | awk '{print $2}' | head -1 | sed 's/^'$4'//g') master"
 	fi
 fi
