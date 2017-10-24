@@ -1,22 +1,12 @@
 #!/bin/bash
 
-# A shitty method to push a repo
-
-if [ -z $2 ] || [ -z $3 ]; then
-	exit 1;
-fi
 if [ $1 ] && [ -d $1 ]; then
 	cd $1
 	if [ -d .git ]; then
-		remote="https://$2:$3@$(git remote -v | awk '{print $2}' | head -n 1 | sed 's/^https:\/\///g')"
-		branch="master"
-		if [ "$(git status | grep 'git add')" ]; then
-			git add -A
-			git commit -m "routine commit $(date '+%d-%b-%Y-%I:%M%p')"
-			git push $remote $branch
-		fi
-		if [ "$(git status | grep 'git push')" ]; then
-			git push $remote $branch
-		fi 
+        if [ "$(git status | grep 'git add')" ]; then
+		    git add -A
+		    git commit -m "routine commit $(date '+%d-%b-%Y-%I:%M%p')"
+        fi
+		git push origin master
 	fi
 fi
